@@ -1,0 +1,59 @@
+<body id="body"></body>
+<script>
+  // Q:- Write a program which will find all occurrency of a pattern in a text suppose there is a text "tadaddttaetadadadata", Here the parttern (data) appears in text.
+
+  // Other Function
+  function randomNum() {
+    return Math.floor(Math.random() * 256);
+  }
+  // Returns an array of 3 values for rgb
+  function randomRGB() {
+    var red = randomNum();
+    var green = randomNum();
+    var blue = randomNum();
+    return [red, green, blue];
+  }
+  // Store an array of values for rgb
+  var rgbVals = randomRGB();
+  // Turn array into an rgb value
+  var tempColor =
+    "rgb(" + rgbVals[0] + ", " + rgbVals[1] + ", " + rgbVals[2] + ")";
+
+  // Get user inputs
+  var text = prompt("Enter the text");
+  var pat = prompt("Enter findable Pattern");
+  //Processing  program
+  var count = 0;
+  var MathIndex = new Array();
+  for (let index = 0; index < text.length; index++) {
+    var lastchar = index + pat.length;
+    if (lastchar > text.length) {
+      lastchar = text.length;
+    }
+    var autPat = "";
+    var arrayData = new Array();
+    for (let d = index; d < lastchar; d++) {
+      autPat += text[d];
+      arrayData.push(d);
+    }
+
+    if (autPat == pat) {
+      MathIndex.push(arrayData);
+      count++;
+    }
+  }
+  // show output
+  for (let k = 0; k < text.length; k++) {
+    document.write(text[k]);
+  }
+  document.write(
+    "<br><br><p  style='color:green; padding:0; margin:0; font-size:20px;'>the count of '" +
+      pat +
+      "' is " +
+      count +
+      "</p>"
+  );
+  console.log(MathIndex);
+
+  // document.getElementById('body').style.background = tempColor;
+</script>
